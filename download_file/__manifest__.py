@@ -30,7 +30,7 @@
         # 'demo/demo.xml',
     ],
     'qweb':[
-        'static/src/xml/import.xml',
+        # 'static/src/xml/import.xml',
     ],
     'application': True,
 }
