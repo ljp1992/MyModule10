@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+    <!-- 导入excel form -->
+      <record id="import_wizard_form" model="ir.ui.view">
+        <field name="name">import_wizard_form</field>
+        <field name="model">import.wizard</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <div>
+                    <b>注意：</b>
+                    <!--<p>系统已存在的数据将会被覆盖</p>-->
+                </div>
+                <group>
+                    <group>
+                        <field name="data" nolabel="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="下载模板" name="download_template_file" type="object" class="btn-primary"/>
+                    <button string="导入" name="import_excel" type="object" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--导入excel action-->
+      <record id="import_customer_act" model="ir.actions.act_window">
+          <field name="name">导入excel</field>
+          <field name="res_model">import.wizard</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">form</field>
+          <field name="target">new</field>
+      </record>
+
+      <!--<record model="ir.values" id="import_customer_val">-->
+          <!--<field name="name">import_customer_val</field>-->
+          <!--<field name="key2">client_action_multi</field>-->
+          <!--<field name="model">customer</field>-->
+          <!--<field eval="'ir.actions.act_window,%d'%import_customer_act" name="value"/>-->
+      <!--</record>-->
+  </data>
+</odoo>
