@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="assets_backend" name="hide_attachment" inherit_id="web.assets_backend">
+    <template id="assets_backend_ljp" name="hide_attachment" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <script type="text/javascript" src="/hide_attachment/static/src/js/hide_attachment.js"></script>
         </xpath>

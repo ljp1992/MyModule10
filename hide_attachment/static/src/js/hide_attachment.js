@@ -1,10 +1,7 @@
-odoo.define('document.document', function(require) {
+odoo.define('hide_attachment.hide_attachment_js', function(require) {
 "use strict";
 
-var core = require('web.core');
 var Sidebar = require('web.Sidebar');
-
-var _t = core._t;
 
 Sidebar.include({
     init : function(){
