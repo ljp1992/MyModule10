@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_tree_lot" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!--字段context添加键值对{'onchange_field':'XXX'}，onchange方法会用到 Added by 刘吉平 on 2017-12-13-->
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+                <attribute name="context">{'onchange_field':'product_id'}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/form/group/group/field[@name='product_id']" position="attributes">
+                <attribute name="context">{'onchange_field':'product_id'}</attribute>
+            </xpath>
+            
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="attributes">
+                <attribute name="context">{'onchange_field':'product_uom_qty'}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/form/group/group/div/field[@name='product_uom_qty']"
+                   position="attributes">
+                <attribute name="context">{'onchange_field':'product_uom_qty'}</attribute>
+            </xpath>
+            
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom']" position="attributes">
+                <attribute name="context">{'onchange_field':'product_uom'}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/form/group/group/div/field[@name='product_uom']"
+                   position="attributes">
+                <attribute name="context">{'onchange_field':'product_uom'}</attribute>
+            </xpath>
+
+            <!-- 1）视图添加字段lot_id
+                 2）展示该仓库该产品库存大于0的批次。需配合stock.production.lot name_search()方法
+                 Added by 刘吉平 on 2017-12-13-->
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="after">
+                <field name="lot_id" options="{'no_create':True}"
+                   context="{'quotation':True,
+                             'product_id_qdodoo':product_id,
+                             'warehouse_id_qdodoo':parent.warehouse_id,
+                             'onchange_field':'lot_id'}"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/form/group/group/field[@name='product_id']" position="after">
+                <field name="lot_id" options="{'no_create':True}"
+                   context="{'quotation':True,
+                             'product_id_qdodoo':product_id,
+                             'warehouse_id_qdodoo':parent.warehouse_id,
+                             'onchange_field':'lot_id'}"/>
+            </xpath>
+            
+        </field>
+    </record>
+</odoo>
